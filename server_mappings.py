@@ -13,8 +13,8 @@ SERVERS = {
 # Add Discord user IDs and their friendly names here
 # Format: user_id = "Username"
 
-# USERS = {
+USERS = {
     # Example entries - replace with your actual user IDs
     # "615404299165499434": "JohnDoe#1234",
     # "123456789012345678": "JaneSmith",
-# }
+}
