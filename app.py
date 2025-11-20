@@ -5,6 +5,13 @@ import os
 import requests
 from functools import lru_cache
 
+# Import manual server/user mappings
+try:
+    from server_mappings import SERVERS, USERS
+except ImportError:
+    SERVERS = {}
+    USERS = {}
+
 app = Flask(__name__)
 
 # Connect to Redis
@@ -17,7 +24,12 @@ DISCORD_API_BASE = 'https://discord.com/api/v10'
 # Cache for Discord API calls (cache for 1 hour)
 @lru_cache(maxsize=1000)
 def get_guild_name(guild_id):
-    """Fetch guild (server) name from Discord API"""
+    """Fetch guild (server) name from Discord API or manual mapping"""
+    # First check manual mappings
+    if str(guild_id) in SERVERS:
+        return SERVERS[str(guild_id)]
+    
+    # Fall back to Discord API if bot token is available
     if not DISCORD_BOT_TOKEN:
         return None
     
@@ -39,7 +51,12 @@ def get_guild_name(guild_id):
 
 @lru_cache(maxsize=5000)
 def get_user_name(user_id):
-    """Fetch user name from Discord API"""
+    """Fetch user name from Discord API or manual mapping"""
+    # First check manual mappings
+    if str(user_id) in USERS:
+        return USERS[str(user_id)]
+    
+    # Fall back to Discord API if bot token is available
     if not DISCORD_BOT_TOKEN:
         return None
     
