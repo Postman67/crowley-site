@@ -81,9 +81,47 @@ def get_user_name(user_id):
         print(f"Error fetching user name: {e}")
     return None
 
+def get_bot_status(bot_id):
+    """Fetch bot status from Discord API or manual mapping"""
+    # First check if we have a manual name for this bot
+    bot_name = USERS.get(str(bot_id), "Crowley Music Bot")
+    
+    # Try to get status from Discord API if token is available
+    if DISCORD_BOT_TOKEN:
+        try:
+            headers = {
+                'Authorization': f'Bot {DISCORD_BOT_TOKEN}'
+            }
+            response = requests.get(
+                f'{DISCORD_API_BASE}/users/{bot_id}',
+                headers=headers,
+                timeout=5
+            )
+            if response.status_code == 200:
+                data = response.json()
+                username = data.get('username', bot_name)
+                # Check if bot flag is present
+                is_bot = data.get('bot', False)
+                return {
+                    'name': username,
+                    'status': 'online',
+                    'is_bot': is_bot
+                }
+        except Exception as e:
+            print(f"Error fetching bot status: {e}")
+    
+    # Return default values if API is unavailable
+    return {
+        'name': bot_name,
+        'status': 'unknown',
+        'is_bot': True
+    }
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    bot_id = '1365530615272706128'
+    bot_info = get_bot_status(bot_id)
+    return render_template('index.html', bot_info=bot_info)
 
 @app.route('/serverqueue/<server_id>')
 def server_queue(server_id):

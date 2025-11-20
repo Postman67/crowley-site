@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Music Bot Queue Viewer</title>
+    <title>Crowley Music Bot - Queue Viewer</title>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.url }}">
-    <meta property="og:title" content="Discord Music Bot Queue Viewer">
-    <meta property="og:description" content="View music queues from Discord servers. Enter a server ID to see what's playing!">
+    <meta property="og:title" content="Crowley Music Bot - Queue Viewer">
+    <meta property="og:description" content="View music queues from Discord servers running Crowley Music Bot">
     <meta property="og:image" content="{{ request.url_root }}static/images/music-preview.png">
-    <meta property="og:site_name" content="Discord Music Queue Viewer">
+    <meta property="og:site_name" content="Crowley Music Bot">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request.url }}">
-    <meta property="twitter:title" content="Discord Music Bot Queue Viewer">
-    <meta property="twitter:description" content="View music queues from Discord servers. Enter a server ID to see what's playing!">
+    <meta property="twitter:title" content="Crowley Music Bot - Queue Viewer">
+    <meta property="twitter:description" content="View music queues from Discord servers running Crowley Music Bot">
     <meta property="twitter:image" content="{{ request.url_root }}static/images/music-preview.png">
     
     <!-- Discord-specific -->
@@ -27,13 +27,37 @@
 </head>
 <body>
     <div class="container">
-        <h1>Discord Music Bot Queue Viewer</h1>
-        <div class="input-section">
-            <label for="server-id">Enter Server ID:</label>
-            <input type="text" id="server-id" placeholder="e.g., 209384752">
-            <button onclick="viewQueue()">View Queue</button>
+        <div class="hero-section">
+            <div class="bot-icon">🎵</div>
+            <h1>{{ bot_info.name }}</h1>
+            
+            <div class="status-indicator">
+                <span class="status-dot status-{{ bot_info.status }}"></span>
+                <span class="status-text">{{ bot_info.status|capitalize }}</span>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">💡</div>
+                <p class="info-message">
+                    If you are looking for your server queue, run <code>/queue</code> in your server
+                </p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <span class="feature-icon">🎶</span>
+                    <span class="feature-text">Real-time Queue Updates</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎧</span>
+                    <span class="feature-text">Spotify Integration</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🌐</span>
+                    <span class="feature-text">Web-based Viewer</span>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="/static/js/index.js"></script>
 </body>
 </html>
