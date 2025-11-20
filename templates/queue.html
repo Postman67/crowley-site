@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue - Server {{ server_id }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Music Queue</h1>
+            <p class="server-id">
+                <span id="server-name" class="server-name-display"></span>
+                <span class="server-id-small">Server ID: <span id="server-id">{{ server_id }}</span></span>
+            </p>
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
+        
+        <div id="queue-container">
+            <div class="loading">Loading queue...</div>
+        </div>
+    </div>
+    <script src="/static/js/queue.js"></script>
+</body>
+</html>
