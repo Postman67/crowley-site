@@ -70,7 +70,15 @@ def index():
 
 @app.route('/serverqueue/<server_id>')
 def server_queue(server_id):
-    return render_template('queue.html', server_id=server_id)
+    # Try to get the server name for better meta tags
+    guild_name = get_guild_name(server_id)
+    page_title = f"Music Queue - {guild_name}" if guild_name else f"Music Queue - Server {server_id}"
+    description = f"View the current music queue for {guild_name}" if guild_name else f"View the current music queue for server {server_id}"
+    
+    return render_template('queue.html', 
+                         server_id=server_id,
+                         page_title=page_title,
+                         page_description=description)
 
 @app.route('/api/queue/<server_id>')
 def get_queue(server_id):
