@@ -34,8 +34,9 @@ h1 {
 
 .bot-icon {
     font-size: 80px;
+    scale: 1rem;
     margin-bottom: 20px;
-    animation: pulse 2s ease-in-out infinite;
+    animation: pulse 6s ease-in-out infinite;
 }
 
 @keyframes pulse {

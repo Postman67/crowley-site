@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crowley Music Bot - Queue Viewer</title>
+    <title>Crowley Homepage</title>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.url }}">
-    <meta property="og:title" content="Crowley Music Bot - Queue Viewer">
-    <meta property="og:description" content="View music queues from Discord servers running Crowley Music Bot">
+    <meta property="og:title" content="Crowley">
+    <meta property="og:description" content="View music queues from servers with Crowley">
     <meta property="og:image" content="{{ request.url_root }}static/images/music-preview.png">
-    <meta property="og:site_name" content="Crowley Music Bot">
+    <meta property="og:site_name" content="Crowley">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request.url }}">
-    <meta property="twitter:title" content="Crowley Music Bot - Queue Viewer">
-    <meta property="twitter:description" content="View music queues from Discord servers running Crowley Music Bot">
+    <meta property="twitter:title" content="Crowley">
+    <meta property="twitter:description" content="View music queues from servers with Crowley">
     <meta property="twitter:image" content="{{ request.url_root }}static/images/music-preview.png">
     
     <!-- Discord-specific -->
@@ -28,7 +28,9 @@
 <body>
     <div class="container">
         <div class="hero-section">
-            <div class="bot-icon">🎵</div>
+            <div class="bot-icon">
+                <img src="/static/images/crowleypfp.gif" alt="Crowley" style="object-fit: cover; border-radius: 50%;">
+            </div></div>
             <h1>{{ bot_info.name }}</h1>
             
             <div class="status-indicator">
@@ -39,7 +41,7 @@
             <div class="info-card">
                 <div class="info-icon">💡</div>
                 <p class="info-message">
-                    If you are looking for your server queue, run <code>/queue</code> in your server
+                    If you are looking for your server queue, run <code>/queue</code> in your server and click the link provided!
                 </p>
             </div>
             
@@ -47,10 +49,6 @@
                 <div class="feature-item">
                     <span class="feature-icon">🎶</span>
                     <span class="feature-text">Real-time Queue Updates</span>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🎧</span>
-                    <span class="feature-text">Spotify Integration</span>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">🌐</span>
