@@ -337,15 +337,40 @@ h1 {
     display: inline-block;
     padding: 6px 15px;
     background: #1DB954;
-    color: #020107;
+    color: white;
     text-decoration: none;
     border-radius: 20px;
     font-size: 0.9em;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .song-link:hover {
     background: #1ed760;
+    transform: translateY(-2px);
+}
+
+.song-link.spotify {
+    background: #1DB954;
+}
+
+.song-link.spotify:hover {
+    background: #1ed760;
+}
+
+.song-link.apple-music {
+    background: #FA243C;
+}
+
+.song-link.apple-music:hover {
+    background: #ff4d62;
+}
+
+.song-link.youtube {
+    background: #FF0000;
+}
+
+.song-link.youtube:hover {
+    background: #ff3333;
 }
 
 @media (max-width: 600px) {

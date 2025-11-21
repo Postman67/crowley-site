@@ -19,6 +19,31 @@ function formatRequester(song) {
     return `👤 User: ${song.requester}`;
 }
 
+// Detect music platform from URI and return appropriate link HTML
+function getMusicLink(uri) {
+    if (!uri) return '';
+    
+    let platform = 'Music';
+    let icon = '🎵';
+    let linkClass = 'song-link';
+    
+    if (uri.includes('spotify.com')) {
+        platform = 'Spotify';
+        icon = '🎵';
+        linkClass = 'song-link spotify';
+    } else if (uri.includes('music.apple.com') || uri.includes('apple.com/music')) {
+        platform = 'Apple Music';
+        icon = '🍎';
+        linkClass = 'song-link apple-music';
+    } else if (uri.includes('youtube.com') || uri.includes('youtu.be')) {
+        platform = 'YouTube';
+        icon = '▶️';
+        linkClass = 'song-link youtube';
+    }
+    
+    return `<a href="${escapeHtml(uri)}" target="_blank" class="${linkClass}">${icon} Open in ${platform}</a>`;
+}
+
 // Fetch and display the queue
 async function loadQueue() {
     const queueContainer = document.getElementById('queue-container');
@@ -68,7 +93,7 @@ async function loadQueue() {
                         <div class="song-details">
                             <span class="song-duration">⏱️ ${formatDuration(song.duration)}</span>
                             <span class="song-requester">${formatRequester(song)}</span>
-                            ${song.uri ? `<a href="${escapeHtml(song.uri)}" target="_blank" class="song-link">🎵 Open in Spotify</a>` : ''}
+                            ${getMusicLink(song.uri)}
                         </div>
                     </div>
                 </li>

@@ -5,7 +5,7 @@
 SERVERS = {
     # Example entries - replace with your actual server IDs
     "999114293339496458": "Trash Kingdom",
-    # "123456789": "Gaming Community",
+    "1231033730873692280": "BTG",
     # "987654321": "Music Lovers",
 }
 
