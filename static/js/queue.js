@@ -61,7 +61,7 @@ async function loadQueue() {
         queue.forEach((song, index) => {
             queueHTML += `
                 <li class="queue-item">
-                    <span class="queue-item-number">${index + 1}</span>
+                    <span class="queue-item-number"># ${index + 1}</span>
                     <div class="song-info">
                         <div class="song-title">${escapeHtml(song.title)}</div>
                         <div class="song-author">by ${escapeHtml(song.author)}</div>
